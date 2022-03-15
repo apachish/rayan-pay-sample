@@ -1,0 +1,14 @@
+{
+  "name": "rayanpay/php-pure",
+  "description": "It is a package for testing and working with RyanPay payment gateway",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "shahriar",
+      "email": "support@apachish.ir"
+    }
+  ],
+  "require": {
+  }
+}
