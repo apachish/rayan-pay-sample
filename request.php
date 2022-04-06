@@ -6,7 +6,14 @@ require_once("rayanpay.php");
 
 $_SESSION = [];
 $rayan_pay = new rayanpay();
+/*
+ *
+ *  چک کردن داده ارسالی موبایل،ایمیل ،مبلغ و فیلد های اجباری بررسی می شود
+ */
 $validation = $rayan_pay->validationForm($_POST);
+/*
+ * درصورت خطا در نشست قرار گرفته و به صفحه اصلی می رود
+ */
 if (!empty($validation)) {
     $_SESSION['error'] = $validation;
     @header('Location: ' . $rayan_pay->getUrl());
@@ -28,10 +35,21 @@ try {
     $rayan_pay->type = $type;
     $rayan_pay->CallbackURL = $rayan_pay->getUrl() . "verify.php";
 
+    /*
+     * درخواست که در صورت موفقیت آمیز بودن برابر 100
+     * در غیر این صورت عددی منفی میباشد
+     */
     $result_start = $rayan_pay->request();
+    /*
+     * درصورت ۱۰۰ باشد ریدایرکت می شود به آدرس
+     * https://pms.rayanpay.com/pg/startpay/$Authority
+     */
     if ($result_start['Status'] == 100) {
         $rayan_pay->redirect($result_start["StartPay"]);
     } else {
+        /*
+         * درصورت منفی بودن بر اساس کد خطا پیام نمایش داده می شود
+         */
         $response = $result_start;
         include "layout.php";
     }

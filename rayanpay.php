@@ -123,6 +123,9 @@ class rayanpay
         }
     }
 
+    /*
+     * تابعی برای تغییر مسیر صفحه
+     */
     public function redirect($url)
     {
         header("Location: " . $url, true, 301);
@@ -191,7 +194,7 @@ class rayanpay
     }
 
     /*
-     * تابع درخواست  تایید بود که با توجه به گذاشتن شماره سفارش در ادرس بازگشتی در این تلبع بررسی شده و در صورت درست بودن پول از حساب کاربر کم می شود
+     * تابع درخواست  تایید بود که با توجه به گذاشتن شماره سفارش در ادرس بازگشتی در این تابع بررسی شده و در صورت درست بودن پول از حساب کاربر کم می شود
      */
     public function verify()
     {
@@ -247,12 +250,15 @@ class rayanpay
         );
     }
 
+    /*
+     * درصورتی که وضعیت درخواست بازگشتی از درگاه بانک NOK
+     * باشد صدا می شود که پارامتر ها مورد نیاز از فایل خواند نمایش دهد
+     */
     public function notVerify()
     {
         $this->readStorage();
         $Status = 0;
         $Message = "";
-
         return array(
             "Method" => $this->type,
             "Status" => $Status,
@@ -367,6 +373,9 @@ class rayanpay
         return $url;
     }
 
+    /*
+     * تابعی برا نمایش خطا
+     */
     public function dd($data)
     {
         echo "<pre>";
