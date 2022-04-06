@@ -146,13 +146,14 @@ class rayanpay
             ]);
 
             $paymentRequest = new PaymentRequest();
-            $paymentRequest->setMerchantID($this->MerchantID);
+            $paymentRequest->setMerchantId($this->MerchantID);
             $paymentRequest->setAmount((int)$this->Amount);
             $paymentRequest->setDescription($this->Description);
             $paymentRequest->setEmail($this->email);
             $paymentRequest->setMobile($this->mobile);
             $paymentRequest->setCallbackURL($this->CallbackURL);
-            $result = $client->PaymentRequest(["paymentRequest" => $paymentRequest]);
+
+            $result = $client->PaymentRequest($paymentRequest);
             if (!isset($result->PaymentRequestResult)) return [];
             $Status = (isset($result->PaymentRequestResult->Status) && $result->PaymentRequestResult->Status != "") ? $result->PaymentRequestResult->Status : 0;
             $this->Authority = (isset($result->PaymentRequestResult->Authority) && $result->PaymentRequestResult->Authority != "") ? $result->PaymentRequestResult->Authority : "";
@@ -210,16 +211,14 @@ class rayanpay
                 "exception" => 1,
             ]);
             $payment_verification = new PaymentVerification();
-            $payment_verification->setMerchantID($this->MerchantID);
+            $payment_verification->setMerchantId($this->MerchantID);
             $payment_verification->setAmount($this->Amount);
             $payment_verification->setAuthority($this->Authority);
-//            $this->dd(                ["PaymentVerificationRequest" => $payment_verification]);
             $result = $client->PaymentVerification(
-                ["PaymentVerificationRequest" => $payment_verification]
+                 $payment_verification
             );
-
             $Status = isset($result->PaymentVerificationResult->Status) ? $result->PaymentVerificationResult->Status : 0;
-            $RefID = (isset($result->PaymentVerificationResult->RefID)) ? $result->RefID : "";
+            $RefID = (isset($result->PaymentVerificationResult->RefID)) ? $result->PaymentVerificationResult->RefID : "";
             $Message = $this->error_message($Status, "", "");
 
 

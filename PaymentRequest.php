@@ -7,7 +7,7 @@ class PaymentRequest
         public $CallbackURL ;
         public $Description  ;
         public $Email;
-        public $MerchantID ;
+        public $MerchantId ;
         public $Mobile;
 
     /**
@@ -77,17 +77,17 @@ class PaymentRequest
     /**
      * @return mixed
      */
-    public function getMerchantID()
+    public function getMerchantId()
     {
-        return $this->MerchantID;
+        return $this->MerchantId;
     }
 
     /**
-     * @param mixed $MerchantID
+     * @param mixed $MerchantId
      */
-    public function setMerchantID($MerchantID)
+    public function setMerchantId($MerchantId)
     {
-        $this->MerchantID = $MerchantID;
+        $this->MerchantId = $MerchantId;
     }
 
     /**

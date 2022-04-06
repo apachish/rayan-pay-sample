@@ -2,7 +2,7 @@
 
 class PaymentVerification
 {
-    public $MerchantID;
+    public $MerchantId;
     public $Amount;
     public $Authority;
 
@@ -41,17 +41,17 @@ class PaymentVerification
     /**
      * @return mixed
      */
-    public function getMerchantID()
+    public function getMerchantId()
     {
-        return $this->MerchantID;
+        return $this->MerchantId;
     }
 
     /**
-     * @param mixed $MerchantID
+     * @param mixed $MerchantId
      */
-    public function setMerchantID($MerchantID)
+    public function setMerchantID($MerchantId)
     {
-        $this->MerchantID = $MerchantID;
+        $this->MerchantId = $MerchantId;
     }
 
 

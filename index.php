@@ -73,7 +73,7 @@ if (!empty($_SESSION["error"])) {
         </select>
         <span class="help-block" dir="rtl">نوع اتصال به سرور های رایان پی</span>
         <label for="MerchantID">MerchantID <span class="text-danger">*</span></label>
-        <input type="text" id="MerchantID" name="MerchantID" class="form-control" value="0cf77558-da05-4326-82e8-2201f86a2ddf" placeholder="Your MerchantID..">
+        <input type="text" id="MerchantID" name="MerchantID" class="form-control" value="" placeholder="Your MerchantID..">
         <span class="help-block" dir="rtl">شناسه شما از شرکت رایان پی.</span>
 
         <label for="Mobile">Mobile </label>
